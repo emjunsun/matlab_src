@@ -1,7 +1,34 @@
-仿真步骤
-
-1.建立圆柱形微波反应器
+#### 仿真步骤
+---
+##### 1.建立圆柱形微波反应器
 
 主程序不需要改变，只需要改变建立模型的子程序，以及Aim_multi_port。
 
 柱坐标系建模，根据角度和r放置馈口。
+
+---
+
+##### 2.matlab连接comsol
+
+直接打开COMSOL，从file->Client Server中导出模型，记住模型的名字，一般为 “Model”；
+打开 Comsol with Matlab，导入模型： model = ModelUtil.model('Model')
+保存模型为matlab代码：model.save('Model_test','m')
+
+或使用 mphsave: （mphsave使用更简便）
+```
+mphsave(model,'temp.m')
+mphsave(model,'temp.mph')
+```
+---
+
+##### 3.馈口角度
+
+
+设置馈口旋转角度的类似代码：
+```
+model.geom('geom1').feature('blk1').set('rot', '10');
+```
+
+
+---
+
