@@ -11,8 +11,14 @@
 ##### 2.matlab连接comsol
 
 直接打开COMSOL，从file->Client Server中导出模型，记住模型的名字，一般为 “Model”；
-打开 Comsol with Matlab，导入模型： model = ModelUtil.model('Model')
-保存模型为matlab代码：model.save('Model_test','m')
+打开 Comsol with Matlab，导入模型： 
+```
+model = ModelUtil.model('Model')
+```
+保存模型为matlab代码：
+```
+model.save('Model_test','m')
+```
 
 或使用 mphsave: （mphsave使用更简便）
 ```
@@ -32,3 +38,17 @@ model.geom('geom1').feature('blk1').set('rot', '10');
 
 ---
 
+##### 4.模型尺寸
+假设圆柱形腔体的尺寸为：底面半径：30cm，高100cm。
+
+极坐标转换到直角坐标：
+```
+x = r cos(theta)
+y = r sin(theta)
+```
+
+matlab自带的函数 pol2cart 可实现极坐标到直角坐标的转换：
+```
+[X,Y] = pol2cart(THETA,RHO)
+其中THETA值是弧度。
+```
