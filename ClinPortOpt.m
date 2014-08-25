@@ -22,6 +22,10 @@ classdef ClinPortOpt
             self.clinR + 100*num
         end
         
+        function out = TestSj(~, test1, test2)
+            %             disp(test);
+            out = test1+ test2;
+        end
     end
     
     methods (Static)
@@ -36,10 +40,7 @@ classdef ClinPortOpt
             result_n = ['result/',result_n,'-',clock_h,'-',clock_m];
         end
         
-        function out = TestSj(test1, test2)
-            %             disp(test);
-            out = test1+ test2;
-        end
+        
         
     end
     
