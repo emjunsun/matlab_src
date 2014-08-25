@@ -9,6 +9,22 @@ classdef ClinPortOpt < handle
         % clinder height, unit is mm
         clinH = 200;
         
+        % port size in cross section,unit is mm
+        portA = 86.36;
+        portB = 43.18;
+        % port length
+        portL = 40;
+        
+        % determine ports location for port No.1 and No.2
+        % degree in oC
+        degree1;
+        degree2;
+        % height of ports (center point), unit is mm
+        h1;
+        h2;
+        % port orthogonality flag, 0 for no, 1 for yes
+        orthFlag1;
+        orthFlag2;
         
         
         % results file name
