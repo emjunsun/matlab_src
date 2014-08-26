@@ -5,15 +5,15 @@ classdef ClinPortOpt < handle
     
     properties
         % clinder radius, unit is mm
-        clinR = 100;
+        clinR = 300;
         % clinder height, unit is mm
-        clinH = 200;
+        clinH = 1000;
         
         % port size in cross section,unit is mm
         portA = 86.36;
         portB = 43.18;
         % port length
-        portL = 40;
+        portL = 50;
         
         % determine ports location for port No.1 and No.2
         % degree in oC
@@ -97,6 +97,11 @@ classdef ClinPortOpt < handle
         
         function aimOptPorts(self)
             
+        end
+        
+        function radian = degree2Radian(self,degree)
+            radian = degree/180 * pi
+            [x, y] = pol2cart(radian, self.clinR)
         end
         
         function buildModel(self)
@@ -464,3 +469,5 @@ classdef ClinPortOpt < handle
         
     end
 end
+
+
