@@ -2,14 +2,14 @@ function out = model
 %
 % ori_model.m
 %
-% Model exported on Aug 27 2014, 01:21 by COMSOL 4.3.2.189.
+% Model exported on Aug 27 2014, 05:08 by COMSOL 4.3.2.189.
 
 import com.comsol.model.*
 import com.comsol.model.util.*
 
 model = ModelUtil.create('Model');
 
-model.modelPath('/home/sunjun');
+model.modelPath('/media/sda6/opt/micro_opt/matlab_src');
 
 model.name('ori.mph');
 
@@ -59,64 +59,64 @@ model.geom('geom1').feature('cyl1').set('h', 'clinH');
 model.geom('geom1').feature('cyl1').set('r', 'clinR');
 model.geom('geom1').feature('sph1').set('r', '250');
 model.geom('geom1').feature('sph1').set('pos', {'0' '0' 'clinH/2-150'});
-model.geom('geom1').feature('cyl2').set('r', 'clinR');
 model.geom('geom1').feature('cyl2').set('pos', {'0' '0' 'clinH/2'});
 model.geom('geom1').feature('cyl2').set('h', 'clinH/2');
-model.geom('geom1').feature('int1').set('intbnd', false);
+model.geom('geom1').feature('cyl2').set('r', 'clinR');
 model.geom('geom1').feature('int1').set('face', 'all');
+model.geom('geom1').feature('int1').set('intbnd', false);
 model.geom('geom1').feature('int1').selection('input').set({'cyl2' 'sph1'});
 model.geom('geom1').feature('mir1').set('keep', true);
 model.geom('geom1').feature('mir1').selection('input').set({'int1'});
-model.geom('geom1').feature('cyl3').set('r', '14.05/2');
 model.geom('geom1').feature('cyl3').set('h', '38.57');
-model.geom('geom1').feature('cone1').set('r', '14.05/2');
-model.geom('geom1').feature('cone1').set('specifytop', 'radius');
-model.geom('geom1').feature('cone1').set('rtop', '25/2');
+model.geom('geom1').feature('cyl3').set('r', '14.05/2');
 model.geom('geom1').feature('cone1').set('pos', {'0' '0' '38.57'});
 model.geom('geom1').feature('cone1').set('h', '15.026');
-model.geom('geom1').feature('rev1').set('pos3', {'-38' '0' '15.026+38.57'});
+model.geom('geom1').feature('cone1').set('rtop', '25/2');
+model.geom('geom1').feature('cone1').set('r', '14.05/2');
+model.geom('geom1').feature('cone1').set('specifytop', 'radius');
+model.geom('geom1').feature('rev1').set('angle2', '90');
 model.geom('geom1').feature('rev1').set('polres', '100');
 model.geom('geom1').feature('rev1').set('axis3', {'0' '-1' '0'});
-model.geom('geom1').feature('rev1').set('angle2', '90');
 model.geom('geom1').feature('rev1').set('axistype', '3d');
+model.geom('geom1').feature('rev1').set('pos3', {'-38' '0' '15.026+38.57'});
 model.geom('geom1').feature('rev1').selection('inputface').set('cone1(1)', [3]);
 model.geom('geom1').feature('ext1').setIndex('distance', '175', 0);
 model.geom('geom1').feature('ext1').selection('inputface').set('rev1(1)', [1]);
 model.geom('geom1').feature('uni1').set('face', 'all');
 model.geom('geom1').feature('uni1').set('intbnd', false);
 model.geom('geom1').feature('uni1').selection('input').set({'cyl3' 'ext1'});
-model.geom('geom1').feature('cyl4').set('r', '20/2');
 model.geom('geom1').feature('cyl4').set('pos', {'0' '0' '500-15'});
 model.geom('geom1').feature('cyl4').set('h', '30');
+model.geom('geom1').feature('cyl4').set('r', '20/2');
 model.geom('geom1').feature('cyl5').set('axis', {'0' '0' '1'});
-model.geom('geom1').feature('cyl5').set('r', '8/2');
 model.geom('geom1').feature('cyl5').set('pos', {'-clinR/2' '0' 'clinH/2+100/2+10'});
 model.geom('geom1').feature('cyl5').set('h', '40');
-model.geom('geom1').feature('rot1').set('axis', {'0' '1' '0'});
+model.geom('geom1').feature('cyl5').set('r', '8/2');
 model.geom('geom1').feature('rot1').set('pos', {'-clinR/2' '0' 'clinH/2+100/2+10+20'});
+model.geom('geom1').feature('rot1').set('axis', {'0' '1' '0'});
 model.geom('geom1').feature('rot1').set('rot', '-33');
 model.geom('geom1').feature('rot1').selection('input').set({'cyl5'});
-model.geom('geom1').feature('cyl6').set('r', '104/2');
 model.geom('geom1').feature('cyl6').set('pos', {'0' '0' '-500-15'});
 model.geom('geom1').feature('cyl6').set('h', '30');
-model.geom('geom1').feature('cone2').set('r', '600');
-model.geom('geom1').feature('cone2').set('specifytop', 'radius');
-model.geom('geom1').feature('cone2').set('rtop', '0');
+model.geom('geom1').feature('cyl6').set('r', '104/2');
 model.geom('geom1').feature('cone2').set('pos', {'0' '0' '-500-15'});
 model.geom('geom1').feature('cone2').set('h', '500+15');
-model.geom('geom1').feature('dif1').set('keep', true);
-model.geom('geom1').feature('dif1').set('intbnd', false);
+model.geom('geom1').feature('cone2').set('rtop', '0');
+model.geom('geom1').feature('cone2').set('r', '600');
+model.geom('geom1').feature('cone2').set('specifytop', 'radius');
 model.geom('geom1').feature('dif1').set('face', 'all');
-model.geom('geom1').feature('dif1').selection('input2').set({'int1'});
+model.geom('geom1').feature('dif1').set('intbnd', false);
+model.geom('geom1').feature('dif1').set('keep', true);
 model.geom('geom1').feature('dif1').selection('input').set({'cyl4'});
+model.geom('geom1').feature('dif1').selection('input2').set({'int1'});
 model.geom('geom1').feature('del2').selection('input').init;
 model.geom('geom1').feature('del2').selection('input').set({'cyl4'});
-model.geom('geom1').feature('uni3').set('intbnd', false);
 model.geom('geom1').feature('uni3').set('face', 'all');
+model.geom('geom1').feature('uni3').set('intbnd', false);
 model.geom('geom1').feature('uni3').selection('input').set({'cyl1' 'cyl6' 'int1' 'mir1'});
-model.geom('geom1').feature('int2').set('keep', true);
-model.geom('geom1').feature('int2').set('intbnd', false);
 model.geom('geom1').feature('int2').set('face', 'all');
+model.geom('geom1').feature('int2').set('intbnd', false);
+model.geom('geom1').feature('int2').set('keep', true);
 model.geom('geom1').feature('int2').selection('input').set({'cone2' 'uni3'});
 model.geom('geom1').feature('del1').selection('input').init;
 model.geom('geom1').feature('del1').selection('input').set({'cone2'});
@@ -128,17 +128,17 @@ model.geom('geom1').feature('blk2').set('size', {'portL' 'portA' 'portB'});
 model.geom('geom1').feature('blk2').set('base', 'center');
 model.geom('geom1').feature('blk2').set('pos', {'clinR*cos(theta2/180*pi)' 'clinR*sin(theta2/180*pi)' 'z2'});
 model.geom('geom1').feature('blk2').set('rot', 'theta2');
-model.geom('geom1').feature('uni2').set('intbnd', false);
 model.geom('geom1').feature('uni2').set('face', 'all');
+model.geom('geom1').feature('uni2').set('intbnd', false);
 model.geom('geom1').feature('uni2').selection('input').set({'blk1' 'blk2' 'uni3'});
-model.geom('geom1').feature('blk3').set('pos', {'(clinR+22-10)*cos(theta1/180*pi)' '(clinR+22-10)*sin(theta1/180*pi)' 'z1'});
 model.geom('geom1').feature('blk3').set('size', {'15' 'portA' 'portB'});
-model.geom('geom1').feature('blk3').set('rot', 'theta1');
 model.geom('geom1').feature('blk3').set('base', 'center');
-model.geom('geom1').feature('blk4').set('pos', {'(clinR+22-10)*cos(theta2/180*pi)' '(clinR+22-10)*sin(theta2/180*pi)' 'z2'});
+model.geom('geom1').feature('blk3').set('pos', {'(clinR+22-10)*cos(theta1/180*pi)' '(clinR+22-10)*sin(theta1/180*pi)' 'z1'});
+model.geom('geom1').feature('blk3').set('rot', 'theta1');
 model.geom('geom1').feature('blk4').set('size', {'15' 'portA' 'portB'});
-model.geom('geom1').feature('blk4').set('rot', 'theta2');
 model.geom('geom1').feature('blk4').set('base', 'center');
+model.geom('geom1').feature('blk4').set('pos', {'(clinR+22-10)*cos(theta2/180*pi)' '(clinR+22-10)*sin(theta2/180*pi)' 'z2'});
+model.geom('geom1').feature('blk4').set('rot', 'theta2');
 model.geom('geom1').run;
 
 model.selection.create('sel1', 'Explicit');
@@ -205,6 +205,8 @@ model.mesh('mesh1').feature('ftet3').selection.set([7 10]);
 model.mesh('mesh1').feature('ftet3').feature.create('size1', 'Size');
 model.mesh('mesh1').feature('ftet3').feature('size1').selection.geom('geom1');
 
+model.view('view1').set('transparency', 'on');
+
 model.material('mat1').name('Air');
 model.material('mat1').propertyGroup('def').func('eta').set('arg', 'T');
 model.material('mat1').propertyGroup('def').func('eta').set('pieces', {'200.0' '1600.0' '-8.38278E-7+8.35717342E-8*T^1-7.69429583E-11*T^2+4.6437266E-14*T^3-1.06585607E-17*T^4'});
@@ -270,17 +272,17 @@ model.material('mat3').propertyGroup('RefractiveIndex').set('ki', '');
 model.material('mat3').propertyGroup('RefractiveIndex').set('n', {'1.45' '0' '0' '0' '1.45' '0' '0' '0' '1.45'});
 model.material('mat3').propertyGroup('RefractiveIndex').set('ki', {'0' '0' '0' '0' '0' '0' '0' '0' '0'});
 model.material('mat4').name('Mist_mat');
-model.material('mat4').propertyGroup('def').func('eta').set('pieces', {'273.15' '413.15' '1.3799566804-0.021224019151*T^1+1.3604562827E-4*T^2-4.6454090319E-7*T^3+8.9042735735E-10*T^4-9.0790692686E-13*T^5+3.8457331488E-16*T^6'; '413.15' '553.75' '0.00401235783-2.10746715E-5*T^1+3.85772275E-8*T^2-2.39730284E-11*T^3'});
 model.material('mat4').propertyGroup('def').func('eta').set('arg', 'T');
-model.material('mat4').propertyGroup('def').func('Cp').set('pieces', {'273.15' '553.75' '12010.1471-80.4072879*T^1+0.309866854*T^2-5.38186884E-4*T^3+3.62536437E-7*T^4'});
+model.material('mat4').propertyGroup('def').func('eta').set('pieces', {'273.15' '413.15' '1.3799566804-0.021224019151*T^1+1.3604562827E-4*T^2-4.6454090319E-7*T^3+8.9042735735E-10*T^4-9.0790692686E-13*T^5+3.8457331488E-16*T^6'; '413.15' '553.75' '0.00401235783-2.10746715E-5*T^1+3.85772275E-8*T^2-2.39730284E-11*T^3'});
 model.material('mat4').propertyGroup('def').func('Cp').set('arg', 'T');
-model.material('mat4').propertyGroup('def').func('rho').set('pieces', {'273.15' '553.75' '838.466135+1.40050603*T^1-0.0030112376*T^2+3.71822313E-7*T^3'});
+model.material('mat4').propertyGroup('def').func('Cp').set('pieces', {'273.15' '553.75' '12010.1471-80.4072879*T^1+0.309866854*T^2-5.38186884E-4*T^3+3.62536437E-7*T^4'});
 model.material('mat4').propertyGroup('def').func('rho').set('arg', 'T');
-model.material('mat4').propertyGroup('def').func('k').set('pieces', {'273.15' '553.75' '-0.869083936+0.00894880345*T^1-1.58366345E-5*T^2+7.97543259E-9*T^3'});
+model.material('mat4').propertyGroup('def').func('rho').set('pieces', {'273.15' '553.75' '838.466135+1.40050603*T^1-0.0030112376*T^2+3.71822313E-7*T^3'});
 model.material('mat4').propertyGroup('def').func('k').set('arg', 'T');
-model.material('mat4').propertyGroup('def').func('cs').set('interp', 'piecewisecubic');
+model.material('mat4').propertyGroup('def').func('k').set('pieces', {'273.15' '553.75' '-0.869083936+0.00894880345*T^1-1.58366345E-5*T^2+7.97543259E-9*T^3'});
 model.material('mat4').propertyGroup('def').func('cs').set('table', {'273' '1403'; '278' '1427'; '283' '1447'; '293' '1481'; '303' '1507'; '313' '1526'; '323' '1541'; '333' '1552'; '343' '1555'; '353' '1555';  ...
 '363' '1550'; '373' '1543'});
+model.material('mat4').propertyGroup('def').func('cs').set('interp', 'piecewisecubic');
 model.material('mat4').propertyGroup('def').set('dynamicviscosity', 'eta(T[1/K])[Pa*s]');
 model.material('mat4').propertyGroup('def').set('ratioofspecificheat', '1.0');
 model.material('mat4').propertyGroup('def').set('electricconductivity', {'5.5e-6[S/m]' '0' '0' '0' '5.5e-6[S/m]' '0' '0' '0' '5.5e-6[S/m]'});
@@ -300,10 +302,28 @@ model.physics('emw').feature('port2').set('Pin', '500');
 model.physics('emw').feature('port2').set('PortType', 'Rectangular');
 
 model.mesh('mesh1').feature('size').set('hauto', 1);
+model.mesh('mesh1').feature('size').set('custom', 'on');
+model.mesh('mesh1').feature('size').set('hmax', '24');
+model.mesh('mesh1').feature('ftet1').name('mist');
 model.mesh('mesh1').feature('ftet1').feature('size1').set('hauto', 3);
+model.mesh('mesh1').feature('ftet1').feature('size1').set('custom', 'on');
+model.mesh('mesh1').feature('ftet1').feature('size1').set('hnarrow', '0.9');
 model.mesh('mesh1').feature('ftet1').feature('size1').set('table', 'cfd');
-model.mesh('mesh1').feature('ftet2').feature('size1').set('hauto', 2);
+model.mesh('mesh1').feature('ftet1').feature('size1').set('hmaxactive', true);
+model.mesh('mesh1').feature('ftet1').feature('size1').set('hmin', '1.75');
+model.mesh('mesh1').feature('ftet1').feature('size1').set('hgrad', '1.1');
+model.mesh('mesh1').feature('ftet1').feature('size1').set('hmax', '17');
+model.mesh('mesh1').feature('ftet1').feature('size1').set('hgradactive', false);
+model.mesh('mesh1').feature('ftet1').feature('size1').set('hcurveactive', false);
+model.mesh('mesh1').feature('ftet1').feature('size1').set('hnarrowactive', false);
+model.mesh('mesh1').feature('ftet1').feature('size1').set('hminactive', false);
+model.mesh('mesh1').feature('ftet2').name('tube');
+model.mesh('mesh1').feature('ftet2').feature('size1').set('hauto', 3);
+model.mesh('mesh1').feature('ftet3').name('silica');
 model.mesh('mesh1').feature('ftet3').feature('size1').set('hauto', 1);
+model.mesh('mesh1').feature('ftet3').feature('size1').set('custom', 'on');
+model.mesh('mesh1').feature('ftet3').feature('size1').set('hmaxactive', true);
+model.mesh('mesh1').feature('ftet3').feature('size1').set('hmax', '22');
 model.mesh('mesh1').run;
 
 model.study.create('std1');
@@ -342,7 +362,6 @@ model.sol('sol1').feature('s1').feature('aDef').set('complexfun', true);
 model.sol('sol1').feature('s1').feature('p1').set('control', 'freq');
 model.sol('sol1').feature('s1').feature('p1').set('plistarr', {'2.45[GHz]'});
 model.sol('sol1').feature('s1').feature('p1').set('pname', {'freq'});
-model.sol('sol1').feature('s1').feature('i1').set('linsolver', 'fgmres');
 model.sol('sol1').feature('s1').feature('i1').feature('mg1').feature('pr').feature('sv1').set('sorvecdof', {'mod1_E'});
 model.sol('sol1').feature('s1').feature('i1').feature('mg1').feature('po').feature('sv1').set('sorvecdof', {'mod1_E'});
 model.sol('sol1').runAll;
