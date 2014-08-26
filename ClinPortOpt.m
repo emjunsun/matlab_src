@@ -5,15 +5,15 @@ classdef ClinPortOpt < handle
     
     properties
         % clinder radius, unit is mm
-        clinR;
+        clinR = 200;
         % clinder height, unit is mm
-        clinH;
+        clinH = 790;
         
         % port size in cross section,unit is mm
-        portA;
-        portB;
+        portA = 96;
+        portB = 55;
         % port length
-        portL;
+        portL = 70;
         
         % determine ports location for port No.1 and No.2
         % degree in oC
@@ -26,7 +26,8 @@ classdef ClinPortOpt < handle
         orthFlag1;
         orthFlag2;
         
-        
+        % 
+        crossFlag;
         % results file name
         result_n;
         % COMSOL model
