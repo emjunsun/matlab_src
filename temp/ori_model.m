@@ -2,14 +2,14 @@ function out = model
 %
 % ori_model.m
 %
-% Model exported on Aug 26 2014, 22:18 by COMSOL 4.3.2.189.
+% Model exported on Aug 27 2014, 01:21 by COMSOL 4.3.2.189.
 
 import com.comsol.model.*
 import com.comsol.model.util.*
 
 model = ModelUtil.create('Model');
 
-model.modelPath('/media/sda6/opt/micro_opt/matlab_src/temp');
+model.modelPath('/home/sunjun');
 
 model.name('ori.mph');
 
@@ -20,6 +20,10 @@ model.param.set('portB', '55');
 model.param.set('portL', '70');
 model.param.set('theta1', '90');
 model.param.set('theta2', '30');
+model.param.set('z1', '50');
+model.param.set('z2', '200');
+model.param.set('water_mat', '65-20*j');
+model.param.set('mist_mat', '5-5*j');
 
 model.modelNode.create('mod1');
 
@@ -118,20 +122,20 @@ model.geom('geom1').feature('del1').selection('input').init;
 model.geom('geom1').feature('del1').selection('input').set({'cone2'});
 model.geom('geom1').feature('blk1').set('size', {'portL' 'portA' 'portB'});
 model.geom('geom1').feature('blk1').set('base', 'center');
-model.geom('geom1').feature('blk1').set('pos', {'clinR*cos(theta1/180*pi)' 'clinR*sin(theta1/180*pi)' '50'});
+model.geom('geom1').feature('blk1').set('pos', {'clinR*cos(theta1/180*pi)' 'clinR*sin(theta1/180*pi)' 'z1'});
 model.geom('geom1').feature('blk1').set('rot', 'theta1');
 model.geom('geom1').feature('blk2').set('size', {'portL' 'portA' 'portB'});
 model.geom('geom1').feature('blk2').set('base', 'center');
-model.geom('geom1').feature('blk2').set('pos', {'clinR*cos(theta2/180*pi)' 'clinR*sin(theta2/180*pi)' '200'});
+model.geom('geom1').feature('blk2').set('pos', {'clinR*cos(theta2/180*pi)' 'clinR*sin(theta2/180*pi)' 'z2'});
 model.geom('geom1').feature('blk2').set('rot', 'theta2');
 model.geom('geom1').feature('uni2').set('intbnd', false);
 model.geom('geom1').feature('uni2').set('face', 'all');
 model.geom('geom1').feature('uni2').selection('input').set({'blk1' 'blk2' 'uni3'});
-model.geom('geom1').feature('blk3').set('pos', {'(clinR+22-10)*cos(theta1/180*pi)' '(clinR+22-10)*sin(theta1/180*pi)' '50'});
+model.geom('geom1').feature('blk3').set('pos', {'(clinR+22-10)*cos(theta1/180*pi)' '(clinR+22-10)*sin(theta1/180*pi)' 'z1'});
 model.geom('geom1').feature('blk3').set('size', {'15' 'portA' 'portB'});
 model.geom('geom1').feature('blk3').set('rot', 'theta1');
 model.geom('geom1').feature('blk3').set('base', 'center');
-model.geom('geom1').feature('blk4').set('pos', {'(clinR+22-10)*cos(theta2/180*pi)' '(clinR+22-10)*sin(theta2/180*pi)' '200'});
+model.geom('geom1').feature('blk4').set('pos', {'(clinR+22-10)*cos(theta2/180*pi)' '(clinR+22-10)*sin(theta2/180*pi)' 'z2'});
 model.geom('geom1').feature('blk4').set('size', {'15' 'portA' 'portB'});
 model.geom('geom1').feature('blk4').set('rot', 'theta2');
 model.geom('geom1').feature('blk4').set('base', 'center');
@@ -229,7 +233,7 @@ model.material('mat1').propertyGroup('def').set('relpermittivity', {'1' '0' '0' 
 model.material('mat1').propertyGroup('def').set('relpermeability', {'1' '0' '0' '0' '1' '0' '0' '0' '1'});
 model.material('mat1').propertyGroup('def').addInput('temperature');
 model.material('mat1').propertyGroup('def').addInput('pressure');
-model.material('mat2').name('Water, liquid');
+model.material('mat2').name('Water_mat');
 model.material('mat2').propertyGroup('def').func('eta').set('arg', 'T');
 model.material('mat2').propertyGroup('def').func('eta').set('pieces', {'273.15' '413.15' '1.3799566804-0.021224019151*T^1+1.3604562827E-4*T^2-4.6454090319E-7*T^3+8.9042735735E-10*T^4-9.0790692686E-13*T^5+3.8457331488E-16*T^6'; '413.15' '553.75' '0.00401235783-2.10746715E-5*T^1+3.85772275E-8*T^2-2.39730284E-11*T^3'});
 model.material('mat2').propertyGroup('def').func('Cp').set('arg', 'T');
@@ -248,7 +252,7 @@ model.material('mat2').propertyGroup('def').set('heatcapacity', 'Cp(T[1/K])[J/(k
 model.material('mat2').propertyGroup('def').set('density', 'rho(T[1/K])[kg/m^3]');
 model.material('mat2').propertyGroup('def').set('thermalconductivity', {'k(T[1/K])[W/(m*K)]' '0' '0' '0' 'k(T[1/K])[W/(m*K)]' '0' '0' '0' 'k(T[1/K])[W/(m*K)]'});
 model.material('mat2').propertyGroup('def').set('soundspeed', 'cs(T[1/K])[m/s]');
-model.material('mat2').propertyGroup('def').set('relpermittivity', {'65-20*j' '0' '0' '0' '65-20*j' '0' '0' '0' '65-20*j'});
+model.material('mat2').propertyGroup('def').set('relpermittivity', {'water_mat' '0' '0' '0' 'water_mat' '0' '0' '0' 'water_mat'});
 model.material('mat2').propertyGroup('def').set('relpermeability', {'1' '0' '0' '0' '1' '0' '0' '0' '1'});
 model.material('mat2').propertyGroup('def').addInput('temperature');
 model.material('mat3').name('Silica glass');
@@ -265,7 +269,7 @@ model.material('mat3').propertyGroup('RefractiveIndex').set('n', '');
 model.material('mat3').propertyGroup('RefractiveIndex').set('ki', '');
 model.material('mat3').propertyGroup('RefractiveIndex').set('n', {'1.45' '0' '0' '0' '1.45' '0' '0' '0' '1.45'});
 model.material('mat3').propertyGroup('RefractiveIndex').set('ki', {'0' '0' '0' '0' '0' '0' '0' '0' '0'});
-model.material('mat4').name('Water');
+model.material('mat4').name('Mist_mat');
 model.material('mat4').propertyGroup('def').func('eta').set('pieces', {'273.15' '413.15' '1.3799566804-0.021224019151*T^1+1.3604562827E-4*T^2-4.6454090319E-7*T^3+8.9042735735E-10*T^4-9.0790692686E-13*T^5+3.8457331488E-16*T^6'; '413.15' '553.75' '0.00401235783-2.10746715E-5*T^1+3.85772275E-8*T^2-2.39730284E-11*T^3'});
 model.material('mat4').propertyGroup('def').func('eta').set('arg', 'T');
 model.material('mat4').propertyGroup('def').func('Cp').set('pieces', {'273.15' '553.75' '12010.1471-80.4072879*T^1+0.309866854*T^2-5.38186884E-4*T^3+3.62536437E-7*T^4'});
@@ -284,7 +288,7 @@ model.material('mat4').propertyGroup('def').set('heatcapacity', 'Cp(T[1/K])[J/(k
 model.material('mat4').propertyGroup('def').set('density', 'rho(T[1/K])[kg/m^3]');
 model.material('mat4').propertyGroup('def').set('thermalconductivity', {'k(T[1/K])[W/(m*K)]' '0' '0' '0' 'k(T[1/K])[W/(m*K)]' '0' '0' '0' 'k(T[1/K])[W/(m*K)]'});
 model.material('mat4').propertyGroup('def').set('soundspeed', 'cs(T[1/K])[m/s]');
-model.material('mat4').propertyGroup('def').set('relpermittivity', {'5-5*j' '0' '0' '0' '5-5*j' '0' '0' '0' '5-5*j'});
+model.material('mat4').propertyGroup('def').set('relpermittivity', {'mist_mat' '0' '0' '0' 'mist_mat' '0' '0' '0' 'mist_mat'});
 model.material('mat4').propertyGroup('def').set('relpermeability', {'1' '0' '0' '0' '1' '0' '0' '0' '1'});
 model.material('mat4').propertyGroup('def').addInput('temperature');
 
