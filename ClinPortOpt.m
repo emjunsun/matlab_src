@@ -5,15 +5,15 @@ classdef ClinPortOpt < handle
     
     properties
         % clinder radius, unit is mm
-        clinR = 300;
+        clinR;
         % clinder height, unit is mm
-        clinH = 1000;
+        clinH;
         
         % port size in cross section,unit is mm
-        portA = 86.36;
-        portB = 43.18;
+        portA;
+        portB;
         % port length
-        portL = 50;
+        portL;
         
         % determine ports location for port No.1 and No.2
         % degree in oC
